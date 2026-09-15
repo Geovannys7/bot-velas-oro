@@ -10,7 +10,7 @@ TELEGRAM_TOKEN = "8786067561:AAGWwwBYBJrobcDhxPGvpVsQ3_hNED8W2eo"
 CHAT_ID = "5876887399"
 SYMBOL = "GC=F"          # Oro
 TIMEFRAME = "15m"
-CHECK_INTERVAL = 60      # Revisar cada 60 segundos
+CHECK_INTERVAL = 5       # Revisar cada 5 segundos
 
 last_signal_time = None
 
@@ -59,7 +59,7 @@ def is_bearish_engulfing_strong(df):
 def main():
     global last_signal_time
     print("Bot iniciado - Buscando velas envolventes bajistas fuertes en XAUUSD 15m...")
-    send_telegram("🟢 <b>Bot de Velas Envolventes activado</b>\nTimeframe: 15 minutos\nMercado: Oro")
+    send_telegram("🟢 <b>Bot de Velas Envolventes activado</b>\nTimeframe: 15 minutos\nMercado: Oro\nRevisión: cada 5 segundos")
 
     while True:
         try:
