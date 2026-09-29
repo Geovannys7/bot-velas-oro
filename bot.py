@@ -7,9 +7,9 @@ from datetime import datetime
 # ================== CONFIGURACIÓN ==================
 TELEGRAM_TOKEN = "8786067561:AAGWwwBYBJrobcDhxPGvpVsQ3_hNED8W2eo"
 CHAT_ID = "5876887399"
-SYMBOL = "GC=F"              # Oro
+SYMBOL = "XAUUSD=X"          # Oro Spot XAUUSD
 TIMEFRAME = "5m"             # 5 minutos
-CHECK_INTERVAL = 10          # Revisar cada 10 segundos (recomendado)
+CHECK_INTERVAL = 10          # Revisar cada 10 segundos
 
 last_signal_time = None
 
@@ -57,8 +57,8 @@ def is_bearish_engulfing_strong(df):
 
 def main():
     global last_signal_time
-    print("Bot iniciado - Velas envolventes bajistas fuertes en XAUUSD 5m...")
-    send_telegram("🟢 <b>Bot de Velas Envolventes 5m activado</b>\nMercado: Oro\nTimeframe: 5 minutos")
+    print("Bot iniciado - Velas envolventes bajistas fuertes en XAUUSD 5m (Spot)...")
+    send_telegram("🟢 <b>Bot de Velas Envolventes 5m activado</b>\nMercado: Oro Spot (XAUUSD)\nTimeframe: 5 minutos")
 
     while True:
         try:
@@ -71,7 +71,7 @@ def main():
                     price = round(curr["close"], 2)
                     message = (
                         f"🔴 <b>SEÑAL VELA ENVOLVENTE BAJISTA FUERTE</b>\n\n"
-                        f"Par: XAUUSD (Oro)\n"
+                        f"Par: XAUUSD (Oro Spot)\n"
                         f"Timeframe: 5 minutos\n"
                         f"Precio: <b>{price}</b>\n"
                         f"Hora: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
