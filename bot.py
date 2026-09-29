@@ -3,14 +3,13 @@ import yfinance as yf
 import pandas as pd
 import requests
 from datetime import datetime
-import pytz
 
 # ================== CONFIGURACIÓN ==================
 TELEGRAM_TOKEN = "8786067561:AAGWwwBYBJrobcDhxPGvpVsQ3_hNED8W2eo"
 CHAT_ID = "5876887399"
-SYMBOL = "GC=F"          # Oro
-TIMEFRAME = "15m"
-CHECK_INTERVAL = 5       # Revisar cada 5 segundos
+SYMBOL = "GC=F"              # Oro
+TIMEFRAME = "5m"             # 5 minutos
+CHECK_INTERVAL = 10          # Revisar cada 10 segundos (recomendado)
 
 last_signal_time = None
 
@@ -58,8 +57,8 @@ def is_bearish_engulfing_strong(df):
 
 def main():
     global last_signal_time
-    print("Bot iniciado - Buscando velas envolventes bajistas fuertes en XAUUSD 15m...")
-    send_telegram("🟢 <b>Bot de Velas Envolventes activado</b>\nTimeframe: 15 minutos\nMercado: Oro\nRevisión: cada 5 segundos")
+    print("Bot iniciado - Velas envolventes bajistas fuertes en XAUUSD 5m...")
+    send_telegram("🟢 <b>Bot de Velas Envolventes 5m activado</b>\nMercado: Oro\nTimeframe: 5 minutos")
 
     while True:
         try:
@@ -73,7 +72,7 @@ def main():
                     message = (
                         f"🔴 <b>SEÑAL VELA ENVOLVENTE BAJISTA FUERTE</b>\n\n"
                         f"Par: XAUUSD (Oro)\n"
-                        f"Timeframe: 15 minutos\n"
+                        f"Timeframe: 5 minutos\n"
                         f"Precio: <b>{price}</b>\n"
                         f"Hora: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
                         f"La vela envolvió y cerró por debajo de la mecha de la vela anterior."
